@@ -73,12 +73,11 @@ export const useUserStore = defineStore(
     }
 
     const addCart = async (product, quantity, date) => {
-      // console.log(date)
       try {
         const { data } = await apiAuth.patch('/user/cart', {
           product,
           quantity,
-          date
+          date,
         })
         cart.value = data.result.cartQuantity
 

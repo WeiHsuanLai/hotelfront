@@ -1,13 +1,21 @@
-<template>
+<template class="page-background">
 <!-- 輪播圖 -->
 <Carousel></Carousel>
+      <!-- 地圖 -->
+       <div class="bg-black">
+         <Map></Map>
+       </div>
   <v-container>
     <v-row>
-      <!-- 地圖 -->
-        <Map></Map>
-        <Footer></Footer>
+      <!-- 遍歷產品列表並顯示每個產品的卡片 -->
+      <v-col cols="3"
+         v-for="product in products" :key="product._id"
+      >
+        <RoomCard v-bind="product"></RoomCard>
+      </v-col>
     </v-row>
   </v-container>
+<Footer></Footer>
 </template>
 
 <script setup>
@@ -19,6 +27,7 @@ import { useSnackbar } from 'vuetify-use-dialog'
 import Carousel from './index/carousel.vue'
 import Map from './index/map.vue'
 import Footer from './index/footer.vue'
+import RoomCard from '../components/RoomCard.vue'
 
 definePage({
   meta: {
@@ -29,32 +38,24 @@ definePage({
 })
 
 const { api } = useApi()
-const createSnackbar = useSnackbar()
-
-const page = ref(1)
-const pages = ref(1)
-const ITEMS_PER_PAGE = 20
-
 const products = ref([])
 const loadProducts = async () => {
   try {
     const { data } = await api.get('/product', {
       params: {
-        itemsPerPage: ITEMS_PER_PAGE,
-        page: page.value
+        itemsPerPage: 100 // 假設你想一次取出所有產品
       }
     })
-    pages.value = Math.ceil(data.result.total / ITEMS_PER_PAGE)
-    products.value.splice(0, products.value.length, ...data.result.data)
+    products.value = data.result.data // 直接賦值所有產品
   } catch (error) {
-    console.log(error)
-    createSnackbar({
-      text: error?.response?.data?.message || '發生錯誤',
-      snackbarProps: {
-        color: 'red'
-      }
-    })
+    console.error(error)
   }
 }
+
 loadProducts()
 </script>
+<style>
+.page-background {
+  background-color: #c1b5b5;
+}
+</style>

@@ -2,7 +2,7 @@
   <!-- 手機板側欄 -->
   <v-navigation-drawer v-if="mobile" v-model="drawer">
     <v-list nav>
-      <v-list-item :prepend-avatar="user.image" :title="user.name" @click="openDialog(null)"></v-list-item>
+      <v-list-item :prepend-avatar="user.image" :title="user.name[0]" @click="openDialog(null)"></v-list-item>
       <template v-for="item in navItems" :key="item.to">
         <!-- 如果 item.show 有登入 才顯示 -->
         <v-list-item :prepend-icon="item.icon" :to="item.to" :title="item.text" v-if="item.show">
@@ -77,7 +77,7 @@
     </v-dialog>
   </template>
   <!-- 主要內容 -->
-  <v-main>
+  <v-main class="page-background">
     <router-view></router-view>
   </v-main>
 </template>
@@ -154,17 +154,11 @@
   const navItems = computed(() => {
     return [
       {
-        to: '/about',
-        text: '關於我們',
-        icon: 'mdi-alpha-a-box-outline',
-        show: !user.isLogin || user.isLogin
-      }, // 如果用戶未登錄，顯示「關於我們」按鈕
-      {
         to: '/aboutroom',
-        text: '客房介紹',
+        text: '立即訂房',
         icon: 'mdi-seat-individual-suite',
         show: !user.isLogin || user.isLogin
-      }, // 如果用戶未登錄，顯示「客房介紹」按鈕
+      }, // 如果用戶未登錄，顯示「立即訂房」按鈕
       {
         to: '/register',
         text: '註冊',
@@ -177,7 +171,6 @@
         icon: 'mdi-account-arrow-left',
         show: !user.isLogin
       }, // 如果用戶未登錄，顯示「登入」按鈕
-
       { to: '/cart', text: '購物車', icon: 'mdi-cart', show: !user.isLogin || user.isLogin }, // 如果用戶已登錄，顯示「購物車」按鈕
       { to: '/orders', text: '訂單', icon: 'mdi-list-box', show: user.isLogin }, // 如果用戶已登錄，顯示「訂單」按鈕
       {
@@ -185,7 +178,13 @@
         text: '管理',
         icon: 'mdi-cog',
         show: user.isLogin && user.isAdmin
-      } // 如果用戶是管理員，顯示「管理」按鈕
+      }, // 如果用戶是管理員，顯示「管理」按鈕,
+      {
+        to: '/about',
+        text: '關於我們',
+        icon: 'mdi-alpha-a-box-outline',
+        show: !user.isLogin || user.isLogin
+      }// 如果用戶未登錄，顯示「關於我們」按鈕
     ]
   })
 
@@ -214,4 +213,8 @@
     justify-content: center;
     align-items: center;
   }
+
+  .page-background {
+  background-color: #f0f0f0;
+}
 </style>
