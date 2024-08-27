@@ -4,7 +4,7 @@
       <v-img :src="image" cover height="500"></v-img>
     </v-col>
     <v-col col="1">
-      <router-link :to="'/products/' + _id">{{ name }}</router-link>
+      <h3>{{ name }}</h3>
     </v-col>
     <v-col>
       <h3 v-if="model">剩餘數量: {{ finalQuantity }}</h3>
