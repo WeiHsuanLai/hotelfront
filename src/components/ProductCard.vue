@@ -6,7 +6,7 @@
     <v-col col="1">
       <h3>{{ name }}</h3>
     </v-col>
-    <v-col>
+    <v-col >
             <v-dialog max-width="500">
               <template v-slot:activator="{ props: activatorProps }">
                 <v-btn
@@ -21,7 +21,12 @@
                 <v-card>
                   <v-card-text>
                     <div>
-                      {{ description }}
+                      <div
+                        v-for="(line, index) in formattedDescription"
+                        :key="index"
+                        :class="getLineClass(index)">
+                        {{ line }}
+                      </div>
                     </div>
                   </v-card-text>
                   <v-card-actions>
@@ -204,4 +209,25 @@ const addCart = async () => {
   }
 }
 
+// 將描述字段按換行符分割成數組
+const formattedDescription = computed(() => {
+  return props.description.split('\n')
+})
+
+// 根據索引應用不同的 CSS 樣式
+const getLineClass = (index) => {
+  if (index === 0 || index === 1) return 'title'
+  if (index === 3) return 'red-text'
+  return ''
+}
 </script>
+<style>
+.title {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.red-text {
+  color: red;
+}
+</style>
