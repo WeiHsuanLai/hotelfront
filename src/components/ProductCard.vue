@@ -7,6 +7,36 @@
       <h3>{{ name }}</h3>
     </v-col>
     <v-col>
+            <v-dialog max-width="500">
+              <template v-slot:activator="{ props: activatorProps }">
+                <v-btn
+                  v-bind="activatorProps"
+                  color="surface-variant"
+                  text="MORE"
+                  variant="flat"
+                ></v-btn>
+              </template>
+
+              <template v-slot:default="{ isActive }">
+                <v-card>
+                  <v-card-text>
+                    <div>
+                      {{ description }}
+                    </div>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-btn
+                      text="關閉介紹"
+                      @click="isActive.value = false"
+                      color="black" variant="flat"
+                    ></v-btn>
+                    <v-spacer></v-spacer>
+                  </v-card-actions>
+                </v-card>
+              </template>
+            </v-dialog>
+          </v-col>
+    <v-col>
       <h3 v-if="model">剩餘數量: {{ finalQuantity }}</h3>
       <h3 v-else>請選擇日期</h3>
     </v-col>
