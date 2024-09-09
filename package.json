@@ -20,6 +20,7 @@
     "validator": "^13.12.0",
     "vee-validate": "^4.13.1",
     "vue": "^3.4.0",
+    "vue3-carousel": "^0.3.3",
     "vuetify": "^3.5.0",
     "vuetify-use-dialog": "^0.6.11",
     "yup": "^1.4.0"

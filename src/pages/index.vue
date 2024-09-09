@@ -1,14 +1,17 @@
 <template class="page-background">
 <!-- 輪播圖 -->
-<Carousel></Carousel>
+ <v-col>
+   <!-- <Carousel></Carousel> -->
+    <Carousel2></Carousel2>
+ </v-col>
       <!-- 地圖 -->
        <div class="bg-black">
-         <Map></Map>
+          <Map></Map>
        </div>
   <v-container>
     <v-row>
       <!-- 遍歷產品列表並顯示每個產品的卡片 -->
-      <v-col cols="3"
+      <v-col cols="12" md="6" lg="3"
          v-for="product in products" :key="product._id"
       >
         <RoomCard v-bind="product"></RoomCard>
@@ -25,6 +28,9 @@ import { useApi } from '@/composables/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 // 輪播圖
 import Carousel from './index/carousel.vue'
+// 輪播圖2
+import Carousel2 from './index/carousel2.vue'
+
 import Map from './index/map.vue'
 import Footer from './index/footer.vue'
 import RoomCard from '../components/RoomCard.vue'
