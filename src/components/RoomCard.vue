@@ -2,7 +2,7 @@
   <v-hover v-slot="{ isHovering, props }">
     <v-card v-bind="props" class="text-center w-100" :elevation="isHovering ? 24 : 6">
       <v-col cols="12">
-        <v-img :src="image" class="d-flex justify-center" min-height="200"></v-img>
+        <v-img :src="image" class="d-flex justify-center" height="250" min-height="200"></v-img>
       </v-col>
       <v-col cols="12">
         <v-row>

@@ -28,7 +28,7 @@
     </v-col>
   </v-col>
   <v-col cols="0" md="6">
-    <v-img src="../../assets/images/image5.jpg"></v-img>
+    <v-img src="../../assets/images/image5.jpg" height="600"></v-img>
   </v-col>
 </v-container>
 </template>
