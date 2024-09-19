@@ -9,7 +9,7 @@
           <v-col cols="6">{{ name }}</v-col>
           <v-col cols="6"><h3>價格${{ price }}</h3></v-col>
           <v-col>
-            <router-link :to="'/products/' + _id">立即訂房</router-link>
+            <router-link :to="'/aboutroom'">立即訂房</router-link>
           </v-col>
           <v-col>
             <v-dialog max-width="500">
