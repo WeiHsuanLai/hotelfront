@@ -10,7 +10,8 @@ module.exports = {
     'one-var': 'off',
     'comma-dangle': 'off',
     'vue/no-multiple-template-root': 'off',
-    'vue/return-in-computed-property': 'off'
+    'vue/return-in-computed-property': 'off',
+    'vue/multi-word-component-names': 'off'
   },
   // eslint-disable 警告不會回報
   reportUnusedDisableDirectives: true

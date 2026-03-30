@@ -24,7 +24,7 @@ const images = [image1, image2, image3, image4]
 <style scoped>
 .carousel__item {
   width: 100%;
-  height: auto;
+  height: 95vh;
   object-fit: cover; /* 確保圖片填滿容器 */
 }
 

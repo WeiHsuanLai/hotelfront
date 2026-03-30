@@ -3,9 +3,9 @@
   <v-navigation-drawer v-if="mobile" v-model="drawer">
     <v-list nav>
       <v-list-item :prepend-avatar="user.image" :title="user.name[0]" @click="openDialog(null)"></v-list-item>
-      <template v-for="item in navItems" :key="item.to">
+      <template v-for="item in navItems">
         <!-- 如果 item.show 有登入 才顯示 -->
-        <v-list-item :prepend-icon="item.icon" :to="item.to" :title="item.text" v-if="item.show">
+        <v-list-item :key="item.to" :prepend-icon="item.icon" :to="item.to" :title="item.text" v-if="item.show">
           <template #append>
             <!-- v-badge 使用者購物車顯示數量 -->
             <v-badge color="error" :content="user.cart" v-if="item.to === '/cart' && user.cart > 0" inline></v-badge>
@@ -34,9 +34,9 @@
 
       <template v-else>
         <!-- 電腦版選單 -->
-        <template v-for="item in navItems" :key="item.to">
+        <template v-for="item in navItems">
           <!-- 如果 v-if="item.show" 登入 會顯示 -->
-          <v-btn v-if="item.show" :prepend-icon="item.icon" :to="item.to">
+          <v-btn :key="item.to" v-if="item.show" :prepend-icon="item.icon" :to="item.to">
             {{ item.text }}
             <!-- v-badge 使用者購物車顯示數量 floating 讓數字右上角 -->
             <v-badge color="red" :content="user.cart" v-if="item.to === '/cart' && user.cart > 0" floating></v-badge>
@@ -57,7 +57,7 @@
           <v-card-text>
             <vue-file-agent
               v-model="fileRecords"
-              v-model:raw-model-value="rawFileRecords"
+              :raw-model-value="rawFileRecords"
               accept="image/jpeg,image/png"
               deletable
               max-size="1MB"
@@ -215,6 +215,7 @@
   }
 
   .page-background {
-  background-color: #f0f0f0;
+  background-color: #000000;
+  min-height: 100vh;
 }
 </style>

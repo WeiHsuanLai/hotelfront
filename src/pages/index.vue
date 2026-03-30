@@ -1,10 +1,9 @@
 <template>
   <div class="page-background">
-    <!-- 輪播圖 -->
-    <v-col>
-      <!-- <Carousel></Carousel> -->
-      <Carousel2></Carousel2>
-    </v-col>
+    <!-- 滿版輪播圖 -->
+    <div class="carousel-wrapper">
+      <Carousel2 />
+    </div>
 
     <!-- 地圖 -->
     <div class="bg-black">
@@ -65,8 +64,9 @@
   loadProducts()
 </script>
 
-<style>
+<style scoped>
   .page-background {
-    background-color: #c1b5b5;
+    /* 繼承 Layout 的背景色，這裡可以放頁面專屬的微調 */
+    color: white;
   }
 </style>
